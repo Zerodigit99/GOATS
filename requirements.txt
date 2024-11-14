@@ -1,0 +1,4 @@
+requests
+colorama
+pendulum
+prompt_toolkit
