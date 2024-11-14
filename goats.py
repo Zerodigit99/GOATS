@@ -2,9 +2,8 @@ import os
 import time
 import json
 import requests
-import datetime
+from datetime import datetime
 from colorama import Fore, Style
-from luxon import DateTime
 
 class Goats:
     def __init__(self):
@@ -25,7 +24,7 @@ class Goats:
         }
 
     def log(self, msg, type='info'):
-        timestamp = datetime.datetime.now().strftime('%H:%M:%S')
+        timestamp = datetime.now().strftime('%H:%M:%S')
         colors = {
             'success': Fore.GREEN,
             'custom': Fore.MAGENTA,
@@ -75,7 +74,7 @@ class Goats:
 
     def complete_mission(self, mission, access_token):
         if mission['type'] == 'Special':
-            now = DateTime.now().to_unix_integer()
+            now = int(datetime.now().timestamp())
             if 'next_time_execute' in mission and now < mission['next_time_execute']:
                 time_left = mission['next_time_execute'] - now
                 self.log(f"Mission {mission['name']} is in cooldown: {time_left} seconds", 'warning')
